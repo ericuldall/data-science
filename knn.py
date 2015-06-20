@@ -1,9 +1,10 @@
 #!/usr/bin/python
 import sys
 import importlib.machinery
-loader = importlib.machinery.SourceFileLoader("algo", "/var/python/ga/data-science/lib/algo.py")
+import os
+loader = importlib.machinery.SourceFileLoader("algo", os.path.dirname(os.path.abspath(__file__))+"/lib/algo.py")
 algo = loader.load_module().Algo()
-algo.loadTrainingSet('/var/python/ga/dat-la-07/hw/hw1-athletes.clean.csv', 
+algo.loadTrainingSet(os.path.dirname(os.path.abspath(__file__))'/knn/athletes.clean.csv', 
     [
         {'index': 2, 'name': 'age', 'type': 'float'},
         {'index': 3, 'name': 'height', 'type': 'float'},
