@@ -17,24 +17,37 @@ algo.loadTrainingSet('/var/python/ga/dat-la-07/hw/hw1-athletes.clean.csv',
 )
 
 args = []
-for arg in sys.argv[1::1]:
+for arg in sys.argv[2::1]:
     args.append(float(arg))
 
-algo.loadTestSet(args)
-
-avgs = {}
-for neighbor in algo.getKNearestNeighbor(3):
-    if neighbor[3] in avgs:
-        avgs[neighbor[3]] += 1
+if sys.argv[1] == '-r' or sys.argv[1] == '-rn':
+    algo.loadTestSet(args)
+    if sys.argv[1] == '-r':
+        algo.useNormalData(False)
     else:
-        avgs[neighbor[3]] = 1
+        algo.getTrainingSetRanges()
 
-top_votes=0
-top_voted=""
+    avgs = {}
+    for neighbor in algo.getKNearestNeighbor(3):
+        if neighbor[3] in avgs:
+            avgs[neighbor[3]] += 1
+        else:
+            avgs[neighbor[3]] = 1
 
-for key, val in avgs.items():
-    if val > top_votes:
-        top_votes = val
-        top_voted = key
+    top_votes=0
+    top_voted=""
 
-print(top_voted)
+    for key, val in avgs.items():
+        if val > top_votes:
+            top_votes = val
+            top_voted = key
+
+    print(top_voted)
+
+if sys.argv[1] == '-xr' or sys.argv[1] == 'xrn':
+    if sys.argv[1] == '-xr':
+        algo.useNormalData(False)
+    else:
+        algo.getTrainingSetRanges()
+    
+    algo.xrefTrainingSet(3)
