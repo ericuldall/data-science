@@ -4,7 +4,7 @@ import importlib.machinery
 import os
 loader = importlib.machinery.SourceFileLoader("algo", os.path.dirname(os.path.abspath(__file__))+"/lib/algo.py")
 algo = loader.load_module().Algo()
-algo.loadTrainingSet(os.path.dirname(os.path.abspath(__file__))'/knn/athletes.clean.csv', 
+algo.loadTrainingSet(os.path.dirname(os.path.abspath(__file__))+"/knn/athletes.clean.csv", 
     [
         {'index': 2, 'name': 'age', 'type': 'float'},
         {'index': 3, 'name': 'height', 'type': 'float'},
