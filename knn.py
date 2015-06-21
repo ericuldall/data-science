@@ -45,7 +45,7 @@ if sys.argv[1] == '-r' or sys.argv[1] == '-rn':
 
     print(top_voted)
 
-if sys.argv[1] == '-xr' or sys.argv[1] == 'xrn':
+if sys.argv[1] == '-xr' or sys.argv[1] == '-xrn':
     if sys.argv[1] == '-xr':
         algo.useNormalData(False)
     else:
